@@ -1,6 +1,8 @@
 const path = require("path");
 
 const express = require("express");
+const multer  = require('multer')
+const bodyParser = require('body-parser');
 const dotEnv = require("dotenv");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -12,15 +14,19 @@ dotEnv.config({ path: "./config/config.env" });
 
 //* Database connection
 connectDB();
-
+const Upload = require("./models/Profile");
 const app = express();
 
 //* Logging
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-
+//setting options for multer
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 //* Static Folder
+app.use(bodyParser.urlencoded({limit: '15mb', extended: false }))
+app.use(bodyParser.json({limit: '15mb'}))
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.use(express.json());
