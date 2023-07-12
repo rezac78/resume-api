@@ -146,6 +146,7 @@ exports.ShowOneEducation = (req, res) => {
 };
 
 exports.createEducation = async (req, res) => {
+  const base64 = req.body.img;
   try {
     const user = new Education({
       _id: new Mongoose.Types.ObjectId(),
@@ -161,6 +162,7 @@ exports.createEducation = async (req, res) => {
       EducationDataEn: req.body.EducationDataEn,
       EducationDataDe: req.body.EducationDataDe,
       EducationDataFa: req.body.EducationDataFa,
+      image: base64,
     });
     await user.save();
     return res.status(200).json({ success: "true" });
@@ -170,6 +172,7 @@ exports.createEducation = async (req, res) => {
 };
 
 exports.EDITEducation = async (req, res) => {
+  const base64 = req.body.img;
   Education.findOneAndUpdate(
     { _id: req.params.id },
     {
@@ -186,6 +189,7 @@ exports.EDITEducation = async (req, res) => {
         EducationDataEn: req.body.EducationDataEn,
         EducationDataDe: req.body.EducationDataDe,
         EducationDataFa: req.body.EducationDataFa,
+        image: base64,
       },
     }
   )
@@ -201,7 +205,7 @@ exports.EDITEducation = async (req, res) => {
 exports.DeletedEducation = (req, res) => {
   const id = req.params.id;
   try {
-    Education.deleteOne({_id: id}).then((result) => {
+    Education.deleteOne({ _id: id }).then((result) => {
       res.status(200).json("deletedsucssFull");
     });
   } catch (err) {
@@ -234,6 +238,7 @@ exports.ShowOneWorkHistory = (req, res) => {
 };
 
 exports.createWorkHistory = async (req, res) => {
+  const base64 = req.body.img;
   try {
     const user = new WorkHistory({
       _id: new Mongoose.Types.ObjectId(),
@@ -250,6 +255,7 @@ exports.createWorkHistory = async (req, res) => {
       WorkHistoryDataDe: req.body.WorkHistoryDataDe,
       WorkHistoryDataFa: req.body.WorkHistoryDataFa,
       WorkHistoryLink: req.body.WorkHistoryLink,
+      image: base64,
     });
     await user.save();
     return res.status(200).json({ success: "true" });
@@ -259,6 +265,7 @@ exports.createWorkHistory = async (req, res) => {
 };
 
 exports.EDITWorkHistory = async (req, res) => {
+  const base64 = req.body.img;
   WorkHistory.findOneAndUpdate(
     { _id: req.params.id },
     {
@@ -276,6 +283,7 @@ exports.EDITWorkHistory = async (req, res) => {
         WorkHistoryDataDe: req.body.WorkHistoryDataDe,
         WorkHistoryDataFa: req.body.WorkHistoryDataFa,
         WorkHistoryLink: req.body.WorkHistoryLink,
+        image: base64,
       },
     }
   )
@@ -291,7 +299,7 @@ exports.EDITWorkHistory = async (req, res) => {
 exports.DeletedWorkHistory = (req, res) => {
   const id = req.params.id;
   try {
-    WorkHistory.deleteOne({_id: id}).then((result) => {
+    WorkHistory.deleteOne({ _id: id }).then((result) => {
       res.status(200).json("deletedsucssFull");
     });
   } catch (err) {
@@ -359,7 +367,7 @@ exports.EDITProgrammingSkills = async (req, res) => {
 exports.DeletedProgrammingSkills = (req, res) => {
   const id = req.params.id;
   try {
-    ProgrammingSkills.deleteOne({_id: id}).then((result) => {
+    ProgrammingSkills.deleteOne({ _id: id }).then((result) => {
       res.status(200).json("deletedsucssFull");
     });
   } catch (err) {
@@ -392,9 +400,11 @@ exports.ShowOneProject = (req, res) => {
 };
 
 exports.createProject = async (req, res) => {
+  const base64 = req.body.img;
   try {
     const user = new Project({
       _id: new Mongoose.Types.ObjectId(),
+      image: base64,
       ProjectTitleEn: req.body.ProjectTitleEn,
       ProjectTitleDe: req.body.ProjectTitleDe,
       ProjectTitleFa: req.body.ProjectTitleFa,
@@ -417,6 +427,7 @@ exports.createProject = async (req, res) => {
 };
 
 exports.EDITProject = async (req, res) => {
+  const base64 = req.body.img;
   Project.findOneAndUpdate(
     { _id: req.params.id },
     {
@@ -434,6 +445,7 @@ exports.EDITProject = async (req, res) => {
         ProjectsDataDe: req.body.ProjectsDataDe,
         ProjectsDataFa: req.body.ProjectsDataFa,
         ProjectsLink: req.body.ProjectsLink,
+        image: base64,
       },
     }
   )
@@ -449,7 +461,7 @@ exports.EDITProject = async (req, res) => {
 exports.DeletedProject = (req, res) => {
   const id = req.params.id;
   try {
-    Project.deleteOne({_id: id}).then((result) => {
+    Project.deleteOne({ _id: id }).then((result) => {
       res.status(200).json("deletedsucssFull");
     });
   } catch (err) {

@@ -38,6 +38,9 @@ const EducationSchema = new mongoose.Schema({
   EducationDataFa: {
     type: String,
   },
+  image: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now(),
