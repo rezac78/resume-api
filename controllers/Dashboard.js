@@ -58,7 +58,7 @@ exports.EDITProfile = async (req, res) => {
     }
   )
     .then((result) => {
-      res.status(200).json({ updated_product: result });
+      res.status(200).json({ updated_product: result , Message: "The update was successful" });
     })
     .catch((err) => {
       console.log(err);
