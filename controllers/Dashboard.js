@@ -58,7 +58,12 @@ exports.EDITProfile = async (req, res) => {
     }
   )
     .then((result) => {
-      res.status(200).json({ updated_product: result , Message: "The update was successful" });
+      res
+        .status(200)
+        .json({
+          updated_product: result,
+          Message: "The update was successful",
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -114,7 +119,12 @@ exports.EDITAboutMe = async (req, res) => {
     }
   )
     .then((result) => {
-      res.status(200).json({ updated_product: result , Message: "The update was successful" });
+      res
+        .status(200)
+        .json({
+          updated_product: result,
+          Message: "The update was successful",
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -165,7 +175,9 @@ exports.createEducation = async (req, res) => {
       image: base64,
     });
     await user.save();
-    return res.status(200).json({ success: "true" , Message: "The Created was successful" });
+    return res
+      .status(200)
+      .json({ success: "true", Message: "The Created was successful" });
   } catch (error) {
     res.send({ Status: "error" });
   }
@@ -194,7 +206,12 @@ exports.EDITEducation = async (req, res) => {
     }
   )
     .then((result) => {
-      res.status(200).json({ updated_product: result , Message: "The update was successful" });
+      res
+        .status(200)
+        .json({
+          updated_product: result,
+          Message: "The update was successful",
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -206,7 +223,7 @@ exports.DeletedEducation = (req, res) => {
   const id = req.params.id;
   try {
     Education.deleteOne({ _id: id }).then((result) => {
-      res.status(200).json("deletedsucssFull");
+      res.status(200).json({ Message: "the Deleted was successful" });
     });
   } catch (err) {
     console.log(err);
@@ -258,7 +275,9 @@ exports.createWorkHistory = async (req, res) => {
       image: base64,
     });
     await user.save();
-    return res.status(200).json({ success: "true" });
+    return res
+      .status(200)
+      .json({ success: "true", Message: "The Created was successful" });
   } catch (error) {
     res.send({ Status: "error" });
   }
@@ -288,7 +307,7 @@ exports.EDITWorkHistory = async (req, res) => {
     }
   )
     .then((result) => {
-      res.status(200).json({ updated_product: result });
+      res.status(200).json({ updated_product: result , Message: "The update was successful" });
     })
     .catch((err) => {
       console.log(err);
@@ -300,7 +319,7 @@ exports.DeletedWorkHistory = (req, res) => {
   const id = req.params.id;
   try {
     WorkHistory.deleteOne({ _id: id }).then((result) => {
-      res.status(200).json("deletedsucssFull");
+      res.status(200).json({Message: "the Deleted was successful"});
     });
   } catch (err) {
     console.log(err);
@@ -339,7 +358,7 @@ exports.createProgrammingSkills = async (req, res) => {
       ProgrammingSkillsNumber: req.body.ProgrammingSkillsNumber,
     });
     await user.save();
-    return res.status(200).json({ success: "true" });
+    return res.status(200).json({ success: "true" , Message: "The Created was successful" });
   } catch (error) {
     res.send({ Status: "error" });
   }
@@ -356,7 +375,7 @@ exports.EDITProgrammingSkills = async (req, res) => {
     }
   )
     .then((result) => {
-      res.status(200).json({ updated_product: result });
+      res.status(200).json({ updated_product: result , Message: "The update was successful" });
     })
     .catch((err) => {
       console.log(err);
@@ -368,7 +387,7 @@ exports.DeletedProgrammingSkills = (req, res) => {
   const id = req.params.id;
   try {
     ProgrammingSkills.deleteOne({ _id: id }).then((result) => {
-      res.status(200).json("deletedsucssFull");
+      res.status(200).json({Message: "the Deleted was successful"});
     });
   } catch (err) {
     console.log(err);
@@ -420,7 +439,7 @@ exports.createProject = async (req, res) => {
       ProjectsLink: req.body.ProjectsLink,
     });
     await user.save();
-    return res.status(200).json({ success: "true" });
+    return res.status(200).json({ success: "true" , Message: "The Created was successful" });
   } catch (error) {
     res.send({ Status: "error" });
   }
@@ -450,7 +469,7 @@ exports.EDITProject = async (req, res) => {
     }
   )
     .then((result) => {
-      res.status(200).json({ updated_product: result });
+      res.status(200).json({ updated_product: result , Message: "The update was successful" });
     })
     .catch((err) => {
       console.log(err);
@@ -462,7 +481,7 @@ exports.DeletedProject = (req, res) => {
   const id = req.params.id;
   try {
     Project.deleteOne({ _id: id }).then((result) => {
-      res.status(200).json("deletedsucssFull");
+      res.status(200).json({Message: "the Deleted was successful"});
     });
   } catch (err) {
     console.log(err);
