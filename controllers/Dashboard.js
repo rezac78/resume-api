@@ -99,7 +99,7 @@ exports.createAboutMe = async (req, res) => {
 
 exports.EDITAboutMe = async (req, res) => {
   const base64 = req.body.img;
-  User.findOneAndUpdate(
+  AboutMe.findOneAndUpdate(
     { _id: req.params.id },
     {
       $set: {
@@ -165,7 +165,7 @@ exports.createEducation = async (req, res) => {
       image: base64,
     });
     await user.save();
-    return res.status(200).json({ success: "true" });
+    return res.status(200).json({ success: "true" , Message: "The Created was successful" });
   } catch (error) {
     res.send({ Status: "error" });
   }
@@ -194,7 +194,7 @@ exports.EDITEducation = async (req, res) => {
     }
   )
     .then((result) => {
-      res.status(200).json({ updated_product: result });
+      res.status(200).json({ updated_product: result , Message: "The update was successful" });
     })
     .catch((err) => {
       console.log(err);
